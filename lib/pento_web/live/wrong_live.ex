@@ -1,5 +1,6 @@
 defmodule PentoWeb.WrongLive do
   use PentoWeb, :live_view
+  # alias PentoWeb.Router.Helpers, as: Routes
 
   def mount(params, session, socket) do
     {:ok,
@@ -42,6 +43,11 @@ defmodule PentoWeb.WrongLive do
         </.link>
       <% end %>
     </h2>
+    <%= if @over do %>
+      <%= live_patch to: Routes.live_path(@socket, __MODULE__), replace: true do %>
+        <button>Try again!</button>
+      <% end %>
+    <% end %>
     """
   end
 
